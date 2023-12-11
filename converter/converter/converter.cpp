@@ -1,32 +1,33 @@
 #include <iostream>
 #include <Windows.h>
+#include <string>
 using namespace std;
 
-int utf8(int n, wchar_t* symbol) {
-    for (int i = 0; i < n; i++) {
-        if ((symbol[i] >= L'!') && (symbol[i] <= L'~')) {
-            wcout << L"UTF-8 код символа " << symbol[i] << ": ";
-            if (symbol[i] >= 0x00 && symbol[i] <= 0x7F) {
-                wcout << hex << ((symbol[i] & 0x7F) | 0x00);
+int utf8(wstring symbol) {
+    for (wchar_t ch : symbol) {
+        if ((ch >= L'!') && (ch <= L'~')) {
+            wcout << L"UTF-8 код символа " << ch << ": ";
+            if (ch >= 0x00 && ch <= 0x7F) {
+                wcout << hex << ((ch & 0x7F) | 0x00);
             }
             wcout << endl;
         }
-        else if ((symbol[i] >= L'А') && (symbol[i] <= L'я')) {
-            wcout << L"UTF-8 код символа " << symbol[i] << ": ";
-            if (symbol[i] >= 0x00 && symbol[i] <= 0x7F) {
-                wcout << hex << ((symbol[i] & 0x7F) | 0x00);
+        else if ((ch >= L'А') && (ch <= L'я')) {
+            wcout << L"UTF-8 код символа " << ch << ": ";
+            if (ch >= 0x00 && ch <= 0x7F) {
+                wcout << hex << ((ch & 0x7F) | 0x00);
             }
-            else if (symbol[i] >= 0x80 && symbol[i] <= 0x7FF) {
-                wcout << hex << ((symbol[i] >> 6) | 0xC0) << ((symbol[i] & 0x3F) | 0x80);
+            else if (ch >= 0x80 && ch <= 0x7FF) {
+                wcout << hex << ((ch >> 6) | 0xC0) << ((ch & 0x3F) | 0x80);
             }
-            else if (symbol[i] >= 0x800 && symbol[i] <= 0xFFFF) {
-                wcout << hex << ((symbol[i] >> 12) | 0xE0) << ' ' << (((symbol[i] >> 6) & 0x3F) | 0x80) << ' ' << ((symbol[i] & 0x3F) | 0x80);
+            else if (ch >= 0x800 && ch <= 0xFFFF) {
+                wcout << hex << ((ch >> 12) | 0xE0) << ' ' << (((ch >> 6) & 0x3F) | 0x80) << ' ' << ((ch & 0x3F) | 0x80);
             }
-            if (symbol[i] >= 0x10000 && symbol[i] <= 0x1FFFF) {
-                wcout << hex << ((symbol[i] >> 18) | 0xF0) << ' '
-                    << (((symbol[i] >> 12) & 0x3F) | 0x80) << ' '
-                    << (((symbol[i] >> 6) & 0x3F) | 0x80) << ' '
-                    << ((symbol[i] & 0x3F) | 0x80);
+            if (ch >= 0x10000 && ch <= 0x1FFFF) {
+                wcout << hex << ((ch >> 18) | 0xF0) << ' '
+                    << (((ch >> 12) & 0x3F) | 0x80) << ' '
+                    << (((ch >> 6) & 0x3F) | 0x80) << ' '
+                    << ((ch & 0x3F) | 0x80);
             }
             wcout << endl;
         }
@@ -34,34 +35,34 @@ int utf8(int n, wchar_t* symbol) {
     return 0;
 }
 
-int bin(int n, wchar_t* symbol) {
-    for (int i = 0; i < n; i++) {
+int bin(wstring symbol) {
+    for (wchar_t ch : symbol) {
         char tmp[33];
-        _itoa_s(static_cast<int>(symbol[i]), tmp, 33, 2);
+        _itoa_s(static_cast<int>(ch), tmp, 33, 2);
         wcout << L"Код символа в BIN: " << tmp;
         wcout << endl;
     }
     return 0;
 }
 
-int utf16(int n, wchar_t* symbol) {
-    for (int i = 0; i < n; i++) {
-        wcout << L"UTF-16 код символа " << symbol[i] << ": ";
-        if (symbol[i] >= 0x10000) {
-            wcout << hex << ((symbol[i] - 0x10000) / 0x400 + 0xD800) << ' ' << (((symbol[i] - 0x10000) % 0x400) + 0xDC00);
+int utf16(wstring symbol) {
+    for (wchar_t ch : symbol) {
+        wcout << L"UTF-16 код символа " << ch << ": ";
+        if (ch >= 0x10000) {
+            wcout << hex << ((ch - 0x10000) / 0x400 + 0xD800) << ' ' << (((ch - 0x10000) % 0x400) + 0xDC00);
         }
         else {
-            wcout << hex << static_cast<int>(symbol[i]);
+            wcout << hex << static_cast<int>(ch);
         }
         wcout << endl;
     }
     return 0;
 }
 
-int dec(int n, wchar_t* symbol) {
-    for (int i = 0; i < n; i++) {
-        wcout << L"DEC код символа " << symbol[i] << ": ";
-        wcout << static_cast<int>(symbol[i]);
+int dec(wstring symbol) {
+    for (wchar_t ch : symbol) {
+        wcout << L"DEC код символа " << ch << ": ";
+        wcout << static_cast<int>(ch);
         wcout << endl;
     }
     return 0;
@@ -72,18 +73,12 @@ int main()
     setlocale(LC_ALL, "Russian");
     SetConsoleOutputCP(CP_UTF8);
     SetConsoleCP(1251);
-    int n;
-    wcout << L"Введите число символов, которые будем вводить с клавиатуры через пробел: ";
-    wcin >> n;
-    wchar_t* symbol = new wchar_t[n];
+    wstring symbol;
     wcout << L"Введите символы: ";
-    for (int i = 0; i < n; i++) {
-        wcin >> symbol[i];
-    }
-    utf8(n, symbol);
-    bin(n, symbol);
-    utf16(n, symbol);
-    dec(n, symbol);
-    delete[] symbol;
+    getline(wcin, symbol);
+    utf8(symbol);
+    bin(symbol);
+    utf16(symbol);
+    dec(symbol);
     return 0;
 }

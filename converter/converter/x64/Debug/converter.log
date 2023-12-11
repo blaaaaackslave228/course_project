@@ -1,3 +1,3 @@
 ﻿  converter.cpp
-D:\Денис\лабы по опи\проект\project\converter\converter\converter.cpp(26,45): warning C4333: >>: слишком большое смещение вправо; потеря данных
+D:\Денис\лабы по опи\проект\project\converter\converter\converter.cpp(27,38): warning C4333: >>: слишком большое смещение вправо; потеря данных
   converter.vcxproj -> D:\Денис\лабы по опи\проект\project\converter\x64\Debug\converter.exe
