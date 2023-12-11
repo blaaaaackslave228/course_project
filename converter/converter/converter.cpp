@@ -1,117 +1,46 @@
 #include <iostream>
 #include <Windows.h>
 #include <string>
+#include "UTF_8.h"
+#include "UTF_16.h"
+#include "DEC.h"
+#include "BIN.h"
+
 using namespace std;
-
-int utf8(wstring symbol) {
-    for (wchar_t ch : symbol) {
-        if ((ch >= L'!') && (ch <= L'~')) {
-            wcout << L"UTF-8 код символа " << ch << ": ";
-            if (ch >= 0x00 && ch <= 0x7F) {
-                wcout << hex << ((ch & 0x7F) | 0x00);
-            }
-            wcout << endl;
-        }
-        else if ((ch >= L'А') && (ch <= L'я')) {
-            wcout << L"UTF-8 код символа " << ch << ": ";
-            if (ch >= 0x00 && ch <= 0x7F) {
-                wcout << hex << ((ch & 0x7F) | 0x00);
-            }
-            else if (ch >= 0x80 && ch <= 0x7FF) {
-                wcout << hex << ((ch >> 6) | 0xC0) << ((ch & 0x3F) | 0x80);
-            }
-            else if (ch >= 0x800 && ch <= 0xFFFF) {
-                wcout << hex << ((ch >> 12) | 0xE0) << ' ' << (((ch >> 6) & 0x3F) | 0x80) << ' ' << ((ch & 0x3F) | 0x80);
-            }
-            if (ch >= 0x10000 && ch <= 0x1FFFF) {
-                wcout << hex << ((ch >> 18) | 0xF0) << ' '
-                    << (((ch >> 12) & 0x3F) | 0x80) << ' '
-                    << (((ch >> 6) & 0x3F) | 0x80) << ' '
-                    << ((ch & 0x3F) | 0x80);
-            }
-            wcout << endl;
-        }
-    }
-    return 0;
-}
-
-int bin(wstring symbol) {
-    for (wchar_t ch : symbol) {
-        if (ch != L' ' && ch != L'\n' && ch != L'\t') 
-        { 
-            char tmp[33];
-            _itoa_s(static_cast<int>(ch), tmp, 33, 2);
-            wcout << L"Бинарный код символа " << ch << ": " << tmp;
-            wcout << endl;
-        }
-    }
-    return 0;
-}
-
-int utf16(wstring symbol) {
-    for (wchar_t ch : symbol) {
-        if (ch != L' ' && ch != L'\n' && ch != L'\t') 
-        {
-            wcout << L"UTF-16 код символа " << ch << ": ";
-            if (ch >= 0x10000) {
-                wcout << hex << ((ch - 0x10000) / 0x400 + 0xD800) << ' ' << (((ch - 0x10000) % 0x400) + 0xDC00);
-            }
-            else {
-                wcout << hex << static_cast<int>(ch);
-            }
-            wcout << endl;
-        }
-    }
-    return 0;
-}
-
-int dec(wstring symbol) {
-    for (wchar_t ch : symbol) {
-        if (ch != L' ' && ch != L'\n' && ch != L'\t'){
-            wcout << L"Код в Windows-1251 символа " << ch << ": ";
-            wcout << static_cast<int>(ch);
-            wcout << endl;
-        }
-    }
-    return 0;
-}
 
 int main()
 {
-    setlocale(LC_ALL, "Russian");
-    SetConsoleOutputCP(CP_UTF8);
+    SetConsoleOutputCP(1251);
     SetConsoleCP(1251);
     int choice;
     do
     {
-        cout << "Выберите вариант работы с конвертером: " << endl;
-        cout << "1 - вывод кодировок символов и кодов в системах счисления" << endl;
-        cout << "2 - вывод символа по кодировке или по коду в системе счисл" << endl;
-        cout << "3 - выход из программы" << endl;
+        cout << "Choose an operation and enter the corresponding number: " << endl;
+        cout << "1 - Display binary, UTF-16, and Windows-1251 codes for a character" << endl;
+        cout << "2 - Enter a description for operation 2" << endl;
+        cout << "3 - Exit the program" << endl;
         cin >> choice;
         cin.ignore();
         switch (choice)
         {
         case 1: {
             wstring symbol;
-            wcout << L"Введите символы: ";
+            wcout << L"Enter a character: ";
             getline(wcin, symbol);
             utf8(symbol);
             bin(symbol);
             utf16(symbol);
             dec(symbol);
+            choice = 3; break;
         }
-              break;
         case 2: {
-        }
-              break;
-        case 3:
             break;
         }
-    }
-        while (choice != 3);
-        return 0;
-}
-    
+        case 3: {
+            break;
+        }
+        }
 
-    
+    } while (choice != 3);
+    return 0;
+}
