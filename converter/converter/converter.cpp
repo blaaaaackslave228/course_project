@@ -8,7 +8,14 @@
 
 using namespace std;
 
-int main() {
+int main() 
+{
+    HWND consoleWindow = GetConsoleWindow();
+    int new_width = 750;
+    int new_height = 500;
+    RECT rect;
+    GetWindowRect(consoleWindow, &rect);
+    MoveWindow(consoleWindow, rect.left, rect.top, new_width, new_height, TRUE);
     system("title Конвертер символов");
     setlocale(LC_ALL, "RU");
     SetConsoleOutputCP(1251);
@@ -16,9 +23,9 @@ int main() {
     int choice;
     do {
         cout << "Выберите вариант работы с программой: " << endl;
-        cout << "1 - Вывести кодировку символов в Windows-1251, форматы в UTF-8, UTF-16, двоичном коде" << endl;
-        cout << "2 - Получить символ при вводе кодировки или формата" << endl;
-        cout << "3 - Выход из программы" << endl;
+        cout << "1 - Вывести кодировку символов в Windows-1251, форматы в UTF-8, UTF-16, двоичном коде." << endl;
+        cout << "2 - Получить символ при вводе кодировки или формата." << endl;
+        cout << "3 - Выход из программы." << endl;
         cin >> choice;
         cin.ignore(); // Добавлено для корректного считывания строки
         switch (choice) {
