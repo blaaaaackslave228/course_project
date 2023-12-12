@@ -127,7 +127,17 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="BIN.cpp" />
     <ClCompile Include="converter.cpp" />
+    <ClCompile Include="WINDOWS1251.cpp" />
+    <ClCompile Include="UTF-16.cpp" />
+    <ClCompile Include="UTF_8.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="BIN.h" />
+    <ClInclude Include="WINDOWS1251.h" />
+    <ClInclude Include="UTF_16.h" />
+    <ClInclude Include="UTF_8.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
