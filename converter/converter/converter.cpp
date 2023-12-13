@@ -69,7 +69,6 @@ int main()
             getline(cin, symbol);
             cout << endl;
             ascii1(symbol);
-            cout << endl;
             break;
         }
         case 4: {
