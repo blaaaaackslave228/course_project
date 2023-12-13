@@ -1,2 +1,35 @@
+<<<<<<< HEAD
 ﻿  converter.cpp
   converter.vcxproj -> D:\Денис\лабы по опи\проект\project\converter\x64\Debug\converter.exe
+=======
+﻿Сборка начата 13.12.2023 22:49:39.
+Уровень детализации журнала: Normal.     1>Проект "E:\ОПИ лабы\Project\project\converter\converter\converter.vcxproj" в узле 2 (целевые объекты Build).
+     1>InitializeBuildStatus:
+         Обращение к "x64\Debug\converter.tlog\unsuccessfulbuild".
+       ClCompile:
+         C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.37.32822\bin\HostX64\x64\CL.exe /c /ZI /JMC /nologo /W3 /WX- /diagnostics:column /sdl /Od /D _DEBUG /D _CONSOLE /D _UNICODE /D UNICODE /Gm- /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /permissive- /Fo"x64\Debug\\" /Fd"x64\Debug\vc143.pdb" /external:W3 /Gd /TP /FC /errorReport:prompt ASCIIWIN1251.cpp
+         ASCIIWIN1251.cpp
+       Link:
+         C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.37.32822\bin\HostX64\x64\link.exe /ERRORREPORT:PROMPT /OUT:"E:\ОПИ лабы\Project\project\converter\x64\Debug\converter.exe" /INCREMENTAL /ILK:"x64\Debug\converter.ilk" /NOLOGO kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"E:\ОПИ лабы\Project\project\converter\x64\Debug\converter.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"E:\ОПИ лабы\Project\project\converter\x64\Debug\converter.lib" /MACHINE:X64 x64\Debug\ASCII.obj
+         x64\Debug\ASCIIWIN1251.obj
+         x64\Debug\BIN.obj
+         x64\Debug\converter.obj
+         x64\Debug\CODE.obj
+         x64\Debug\NUMBER.obj
+         x64\Debug\UNICODE.obj
+         x64\Debug\WINDOWS1251.obj
+         "x64\Debug\UTF-16.obj"
+         x64\Debug\UTF_8.obj
+         LINK : не найден или не выполнена сборка E:\ОПИ лабы\Project\project\converter\x64\Debug\converter.exe при последней инкрементной компоновке; выполняется полная компоновка
+         converter.vcxproj -> E:\ОПИ лабы\Project\project\converter\x64\Debug\converter.exe
+       FinalizeBuildStatus:
+         Файл "x64\Debug\converter.tlog\unsuccessfulbuild" удаляется.
+         Обращение к "x64\Debug\converter.tlog\converter.lastbuildstate".
+     1>Сборка проекта "E:\ОПИ лабы\Project\project\converter\converter\converter.vcxproj" завершена (целевые объекты Build).
+
+Сборка успешно завершена.
+    Предупреждений: 0
+    Ошибок: 0
+
+Прошло времени 00:00:01.17
+>>>>>>> bb59c0c87700da899ac29c4aaf6523c93c439807
