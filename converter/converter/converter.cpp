@@ -72,7 +72,17 @@ int main()
             break;
         }
         case 4: {
-            
+            string symbol1;
+            cout << "Введите коды символов в ASCII: ";
+            getline(cin, symbol1);
+            stringstream ss(symbol1);
+            string code;
+            while (getline(ss, code, ' ')) {
+                char symbol = code_symbols(code);
+                if (symbol != -1) {
+                    cout << "Символ в ASCII: " << symbol << endl;
+                }
+            }
             break;
         }
         case 5: {
