@@ -65,7 +65,12 @@ int main()
             break;
         }
         case 3: {
-            
+            string symbol;
+            cout << "¬ведите русские символы: ";
+            getline(cin, symbol);
+            cout << endl;
+            ascii1(symbol);
+            cout << endl;
             break;
         }
         case 4: {
