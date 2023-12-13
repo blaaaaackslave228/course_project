@@ -1,4 +1,4 @@
-﻿Сборка начата 13.12.2023 21:44:46.
+﻿Сборка начата 13.12.2023 21:50:12.
 Уровень детализации журнала: Normal.     1>Проект "E:\ОПИ лабы\Project\project\converter\converter\converter.vcxproj" в узле 2 (целевые объекты Build).
      1>InitializeBuildStatus:
          Обращение к "x64\Debug\converter.tlog\unsuccessfulbuild".
@@ -25,4 +25,4 @@
     Предупреждений: 0
     Ошибок: 0
 
-Прошло времени 00:00:00.10
+Прошло времени 00:00:00.16
