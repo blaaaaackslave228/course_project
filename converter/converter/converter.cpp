@@ -1,10 +1,12 @@
 #include <iostream>
 #include <Windows.h>
 #include <string>
+#include <sstream>
 #include "UTF_8.h"
 #include "UTF_16.h"
 #include "WINDOWS1251.h"
 #include "BIN.h"
+#include "CODE.h"
 
 using namespace std;
 
@@ -27,31 +29,37 @@ int main()
         cout << "2 - Получить символ при вводе кодировки или формата." << endl;
         cout << "3 - Выход из программы." << endl;
         cin >> choice;
-        cin.ignore(); // Добавлено для корректного считывания строки
+        cin.ignore();
+        cout << endl;
         switch (choice) {
         case 1: {
             wstring symbol;
             wcout << L"Введите символы: ";
             getline(wcin, symbol);
             wcout << endl;
-                utf8(symbol);
-                wcout << endl;
-                bin(symbol);
-                wcout << endl;
-                utf16(symbol);
-                wcout << endl;
-                windows(symbol);
-                wcout << endl;
+            utf8(symbol);
+            wcout << endl;
+            bin(symbol);
+            wcout << endl;
+            utf16(symbol);
+            wcout << endl;
+            windows(symbol);
+            wcout << endl;
             break;
         }
         case 2: {
-            // Реализуйте операцию 2 здесь
+            
             break;
         }
         case 3: {
             break;
         }
+        default: {
+            cout << "Вы неправильно ввели номер операции! Пожалуйста, введите номер правильно." << endl;
+            break;
         }
+        }
+        cout << endl;
     } while (choice != 3);
     return 0;
 }
