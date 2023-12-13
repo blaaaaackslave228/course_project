@@ -34,6 +34,8 @@ int main()
         cout << "4 - Получить латинский или русский символ при вводе формата в ASCII." << endl;
         cout << "5 - Получить латинский или русский символ при вводе формата в UNICODE." << endl;
         cout << "6 - Выход из программы." << endl;
+        cout << endl;
+        cout << "Ваш вариант: ";
         cin >> choice;
         cin.ignore();
         cout << endl;
@@ -54,11 +56,19 @@ int main()
             break;
         }
         case 2: {
-            
+            string symbol;
+            cout << "Введите латинские символы: ";
+            getline(cin, symbol);
+            cout << endl;
+            ascii(symbol);
             break;
         }
         case 3: {
-            
+            string symbol;
+            cout << "Введите русские символы: ";
+            getline(cin, symbol);
+            cout << endl;
+            ascii1(symbol);
             break;
         }
         case 4: {
