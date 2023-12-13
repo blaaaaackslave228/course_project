@@ -54,7 +54,12 @@ int main()
             break;
         }
         case 2: {
-            
+            string symbol;
+            cout << "¬ведите латинские символы: ";
+            getline(cin, symbol);
+            cout << endl;
+            ascii(symbol);
+            cout << endl;
             break;
         }
         case 3: {
