@@ -2,11 +2,14 @@
 #include <Windows.h>
 #include <string>
 #include <sstream>
+#include <bitset>
 #include "UTF_8.h"
 #include "UTF_16.h"
 #include "WINDOWS1251.h"
 #include "BIN.h"
 #include "CODE.h"
+#include "ASCII.h"
+#include "ASCIIWIN1251.h"
 
 using namespace std;
 
@@ -20,14 +23,17 @@ int main()
     MoveWindow(consoleWindow, rect.left, rect.top, new_width, new_height, TRUE);
     system("title Конвертер символов");
     setlocale(LC_ALL, "RU");
-    SetConsoleOutputCP(1251);
+    SetConsoleOutputCP(CP_UTF8);
     SetConsoleCP(1251);
     int choice;
     do {
         cout << "Выберите вариант работы с программой: " << endl;
         cout << "1 - Вывести кодировку символов в Windows-1251, форматы в UTF-8, UTF-16, двоичном коде." << endl;
-        cout << "2 - Получить символ при вводе кодировки или формата." << endl;
-        cout << "3 - Выход из программы." << endl;
+        cout << "2 - Вывести кодировки латинских символов в ASCII." << endl;
+        cout << "3 - Вывести кодировки русских символов в ASCII." << endl;
+        cout << "4 - Получить латинский или русский символ при вводе формата в ASCII." << endl;
+        cout << "5 - Получить латинский или русский символ при вводе формата в UNICODE." << endl;
+        cout << "6 - Выход из программы." << endl;
         cin >> choice;
         cin.ignore();
         cout << endl;
@@ -52,6 +58,17 @@ int main()
             break;
         }
         case 3: {
+            
+            break;
+        }
+        case 4: {
+            
+            break;
+        }
+        case 5: {
+            break;
+        }
+        case 6: {
             break;
         }
         default: {
@@ -60,6 +77,6 @@ int main()
         }
         }
         cout << endl;
-    } while (choice != 3);
+    } while (choice != 6);
     return 0;
 }
