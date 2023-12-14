@@ -2,4 +2,4 @@
 #include <string>
 using namespace std;
 
-char code_symbols(const string& code);
+int SymbolInfo(const string& input);

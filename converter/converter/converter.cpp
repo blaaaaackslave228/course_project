@@ -10,6 +10,7 @@
 #include "CODE.h"
 #include "ASCII.h"
 #include "ASCIIWIN1251.h"
+#include "NUMBER.h"
 
 using namespace std;
 
@@ -31,8 +32,8 @@ int main()
         cout << "1 - Вывести кодировку символов в Windows-1251, форматы в UTF-8, UTF-16, двоичном коде." << endl;
         cout << "2 - Вывести кодировки латинских символов в ASCII." << endl;
         cout << "3 - Вывести кодировки русских символов в ASCII." << endl;
-        cout << "4 - Получить латинский или русский символ при вводе формата в ASCII." << endl;
-        cout << "5 - Получить латинский или русский символ при вводе формата в UNICODE." << endl;
+        cout << "4 - Получить латинский символ при вводе формата в ASCII." << endl;
+        cout << "5 - Получить русский символ при вводе формата в ASCII WIN-1251." << endl;
         cout << "6 - Выход из программы." << endl;
         cout << endl;
         cout << "Ваш вариант: ";
@@ -72,20 +73,19 @@ int main()
             break;
         }
         case 4: {
-            string symbol1;
-            cout << "Введите коды символов в ASCII: ";
-            getline(cin, symbol1);
-            stringstream ss(symbol1);
             string code;
-            while (getline(ss, code, ' ')) {
-                char symbol = code_symbols(code);
-                if (symbol != -1) {
-                    cout << "Символ в ASCII: " << symbol << endl;
-                }
-            }
+            cout << "Введите коды латинских символов: ";
+            getline(cin, code);
+            cout << endl;
+            SymbolInfo(code);
             break;
         }
         case 5: {
+            string code;
+            cout << "Введите коды русских символов: ";
+            getline(cin, code);
+            cout << endl;
+            Symbol_Info(code);
             break;
         }
         case 6: {
