@@ -5,15 +5,22 @@
 
 using namespace std;
 
-int windows(std::wstring symbol) {
+int windows(wstring symbol) {
     setlocale(LC_ALL, "RU");
     SetConsoleOutputCP(CP_UTF8);
     SetConsoleCP(1251);
     for (wchar_t ch : symbol) {
         if (ch != L' ' && ch != L'\n' && ch != L'\t') {
-            wcout << L"Код в Windows-1251 символа " << ch << ": ";
-            wcout << static_cast<int>(ch);
-            wcout << endl;
+            if ((ch >= L'a' && ch <= L'z') || (ch >= L'A' && ch <= L'Z')) {
+                wcout << L"Код в Windows-1251 символа " << ch << ": ";
+                wcout << std::dec << static_cast<int>(ch);
+                wcout << endl;
+            }
+            else if ((ch >= L'а' && ch <= L'я') || (ch >= L'А' && ch <= L'Я')) {
+                wcout << L"Код в десятичном формате символа " << ch << ": ";
+                wcout << std::dec << static_cast<int>(ch);
+                wcout << endl;
+            }
         }
     }
     return 0;
