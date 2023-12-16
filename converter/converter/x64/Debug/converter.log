@@ -1,4 +1,12 @@
-﻿  converter.cpp
+﻿  ASCII.cpp
+  ASCIIWIN1251.cpp
+  BIN.cpp
+  CODE.cpp
+  UTF_8.cpp
+D:\Денис\лабы по опи\проект\project\converter\converter\UTF_8.cpp(34,38): warning C4333: >>: слишком большое смещение вправо; потеря данных
+  WINDOWS1251.cpp
+  converter.cpp
 D:\Денис\лабы по опи\проект\project\converter\converter\converter.cpp(25,43): warning C4267: инициализация: преобразование из "size_t" в "int"; возможна потеря данных
 D:\Денис\лабы по опи\проект\project\converter\converter\converter.cpp(25,26): warning C4267: инициализация: преобразование из "size_t" в "const int"; возможна потеря данных
+  Создание кода...
   converter.vcxproj -> D:\Денис\лабы по опи\проект\project\converter\x64\Debug\converter.exe
