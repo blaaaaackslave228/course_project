@@ -4,23 +4,24 @@
 #include <sstream>
 using namespace std;
 
+//подключение функции, которая позволяет вводить символы разных форматов
 int SymbolInfo(const string& input) {
     istringstream iss(input);
     string code;
     while (iss >> code) {
         int decimalCode;
         if (code.substr(0, 2) == "0x" || code.substr(0, 2) == "0X") {
-            // Шестнадцатеричная система счисления
+            //шестнадцатеричная система счисления
             istringstream hexConverter(code.substr(2));
             hexConverter >> hex >> decimalCode;
         }
         else if (code.substr(0, 1) == "0") {
-            // Восьмеричная система счисления
+            //восьмеричная система счисления
             istringstream octConverter(code);
             octConverter >> oct >> decimalCode;
         }
         else {
-            // Десятичная система счисления
+            //десятичная система счисления
             istringstream decConverter(code);
             decConverter >> decimalCode;
         }
@@ -29,6 +30,7 @@ int SymbolInfo(const string& input) {
             cout << "Ошибка: код символа не является латиницей" << endl;
             continue;
         }
+        //вывод найденного символа и других кодировок этого же символа
         cout << "Символ: " << ch << endl;
         cout << "ACSII код в десятичном формате: " << dec << decimalCode << endl;
         cout << "В восьмеричном формате: " << oct << decimalCode << endl;

@@ -2,14 +2,15 @@
 #include <Windows.h>
 #include <string>
 #include "UTF_8.h"
-
 using namespace std;
 
+//подключение функции, которая позволяет выводить коды символов в UTF-8 в UNICODE
 int utf8(std::wstring symbol) {
     setlocale(LC_ALL, "RU");
     SetConsoleOutputCP(CP_UTF8);
     SetConsoleCP(1251);
     for (wchar_t ch : symbol) {
+        //проверяем, является ли символ латинским
         if ((ch >= L'!') && (ch <= L'~')) {
             wcout << L"UTF-8 код символа " << ch << ": ";
             if (ch >= 0x00 && ch <= 0x7F) {
@@ -17,6 +18,7 @@ int utf8(std::wstring symbol) {
             }
             wcout << endl;
         }
+        //иначе, проверяем, является ли символ кириллическим
         else if ((ch >= L'А') && (ch <= L'я')) {
             wcout << L"UTF-8 код символа " << ch << ": ";
             if (ch >= 0x00 && ch <= 0x7F) {

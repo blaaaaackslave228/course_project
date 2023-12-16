@@ -4,12 +4,14 @@
 #include <bitset>
 using namespace std;
 
+//подключение функции, которая выводит форматы кириллических символов в ASCII
 int ascii1(const string& symbol)
 {
     SetConsoleOutputCP(1251);
     for (unsigned char ch : symbol) {
-        // Проверяем, является ли символ кириллическим (входит в CP1251)
+        //проверяем, является ли символ кириллическим (входит в CP1251)
         if ((ch >= 0x80 && ch <= 0xFF) || (ch >= 0xC0 && ch <= 0xDF)) {
+            //вывод форматов кириллических символов в ASCII
             cout << "ASCII код кириллического символа: " << ch << endl;
             cout << "В десятичном формате: " << std::dec << static_cast<int>(ch) << endl;
             cout << "В восьмеричном формате: " << std::oct << static_cast<int>(ch) << endl;

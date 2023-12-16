@@ -2,9 +2,9 @@
 #include <Windows.h>
 #include <string>
 #include "BIN.h"
-
 using namespace std;
 
+//подключение функции, которая позволяет выводить бинарный формат латинских и кириллических символов
 int bin(std::wstring symbol) {
     setlocale(LC_ALL, "RU");
     SetConsoleOutputCP(CP_UTF8);

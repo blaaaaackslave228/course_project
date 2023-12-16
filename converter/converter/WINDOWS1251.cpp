@@ -2,17 +2,17 @@
 #include <Windows.h>
 #include <string>
 #include "WINDOWS1251.h"
-
 using namespace std;
 
+//подключение функции, которая позволяет найти десятичный формат символов
 int windows(wstring symbol) {
     setlocale(LC_ALL, "RU");
     SetConsoleOutputCP(CP_UTF8);
     SetConsoleCP(1251);
     for (wchar_t ch : symbol) {
         if (ch != L' ' && ch != L'\n' && ch != L'\t') {
-            if ((ch >= L'a' && ch <= L'z') || (ch >= L'A' && ch <= L'Z')) {
-                wcout << L"Код в Windows-1251 символа " << ch << ": ";
+            if (ch >= L'!' && ch <= L'~') {
+                wcout << L"Десятичный код в Windows-1251 символа " << ch << ": ";
                 wcout << std::dec << static_cast<int>(ch);
                 wcout << endl;
             }

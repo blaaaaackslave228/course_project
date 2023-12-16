@@ -11,30 +11,49 @@
 #include "ASCII.h"
 #include "ASCIIWIN1251.h"
 #include "NUMBER.h"
-
 using namespace std;
+
+//подключение функций для выделение надписи в рамку
+void drawLine(char ch, int length) {
+    for (int i = 0; i < length; ++i) {
+        cout << ch;
+    }
+    cout << endl;
+}
+
+void drawTitle(string title) {
+    const int titleWidth = title.length() + 4;
+    drawLine('-', titleWidth);
+    cout << "| " << title << " |" << endl;
+    drawLine('-', titleWidth);
+}
 
 int main() 
 {
+    //подлючение функции для изменения размеров консольного окна
     HWND consoleWindow = GetConsoleWindow();
     int new_width = 750;
-    int new_height = 500;
+    int new_height = 1000;
     RECT rect;
     GetWindowRect(consoleWindow, &rect);
     MoveWindow(consoleWindow, rect.left, rect.top, new_width, new_height, TRUE);
-    system("title Конвертер символов");
+    //подключение функции для установления заголовка консольного окна
+    system("title SMT - конвертер символов");
     setlocale(LC_ALL, "RU");
     SetConsoleOutputCP(CP_UTF8);
     SetConsoleCP(1251);
     int choice;
     do {
-        cout << "Выберите вариант работы с программой: " << endl;
+        cout << "**************************************************************************************" << endl;
+        drawTitle("Выберите вариант работы с программой: ");
         cout << "1 - Вывести кодировку символов в Windows-1251, форматы в UTF-8, UTF-16, двоичном коде." << endl;
         cout << "2 - Вывести кодировки латинских символов в ASCII." << endl;
         cout << "3 - Вывести кодировки русских символов в ASCII." << endl;
         cout << "4 - Получить латинский символ при вводе формата в ASCII." << endl;
         cout << "5 - Получить русский символ при вводе формата в ASCII WIN-1251." << endl;
         cout << "6 - Выход из программы." << endl;
+        cout <<endl;
+        cout << "**************************************************************************************" << endl;
         cout << endl;
         cout << "Ваш вариант: ";
         cin >> choice;
@@ -53,7 +72,6 @@ int main()
             utf16(symbol);
             wcout << endl;
             windows(symbol);
-            wcout << endl;
             break;
         }
         case 2: {
