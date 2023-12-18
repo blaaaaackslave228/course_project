@@ -81,3 +81,15 @@ ul>li {
 .d6 a:hover {
     background-color: #2980b9;
 }
+.d0 {
+    text-align: center;
+    background-color: #3498db;
+    padding: 10px;
+    color: #fff;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+}
+
+.time {
+    font-size: 16px;
+    margin: 0;
+}
