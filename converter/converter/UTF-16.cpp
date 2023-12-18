@@ -21,9 +21,6 @@ int utf16(std::wstring symbol) {
             }
             wcout << endl;
         }
-        else {
-            cout << "Введено недопустимое значение" << endl;
-        }
     }
     return 0;
 }

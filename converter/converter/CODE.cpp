@@ -4,6 +4,10 @@
 #include <sstream>
 using namespace std;
 
+bool isLatinChar(char ch) {
+    return (ch >= 33 && ch <= 126);
+}
+
 //подключение функции, которая позволяет вводить символы разных форматов
 int SymbolInfo(const string& input) {
     istringstream iss(input);
@@ -26,7 +30,7 @@ int SymbolInfo(const string& input) {
             decConverter >> decimalCode;
         }
         char ch = static_cast<char>(decimalCode);
-        if (!isalpha(ch)) {
+        if (!isLatinChar(ch)) {
             cout << "Ошибка: код символа не принадлежит латинской букве." << endl;
             continue;
         }

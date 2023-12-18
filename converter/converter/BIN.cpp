@@ -17,9 +17,6 @@ int bin(std::wstring symbol) {
             wcout << L"Двоичный код символа " << ch << ": " << tmp;
             wcout << endl;
         }
-        else {
-            cout << "Введено недопустимое значение" << endl;
-        }
     }
     return 0;
 }
