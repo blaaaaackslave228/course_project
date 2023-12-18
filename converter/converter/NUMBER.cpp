@@ -5,6 +5,12 @@
 #include "NUMBER.h"
 using namespace std;
 
+// Функция, которая проверяет, является ли символ русской буквой
+bool isRussianChar(unsigned char ch) {
+    return (ch >= 192 && ch <= 255);
+}
+
+//подключение функции, которая позволит выводить символ по его введенному формату кода
 int Symbol_Info(const string& input)
 {
     istringstream iss(input);
@@ -27,8 +33,8 @@ int Symbol_Info(const string& input)
             decConverter >> decimalCode;
         }
         unsigned char ch = static_cast<char>(decimalCode);
-        if (!isalpha(ch)) {
-            cout << "Ошибка: код символа не является латиницей" << endl;
+        if (!isRussianChar(ch)) {
+            cout << "Ошибка: код символа не принадлежит русской букве." << endl;
             continue;
         }
         cout << "Символ: " << ch << endl;

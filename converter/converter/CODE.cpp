@@ -27,7 +27,7 @@ int SymbolInfo(const string& input) {
         }
         char ch = static_cast<char>(decimalCode);
         if (!isalpha(ch)) {
-            cout << "Ошибка: код символа не является латиницей" << endl;
+            cout << "Ошибка: код символа не принадлежит латинской букве." << endl;
             continue;
         }
         //вывод найденного символа и других кодировок этого же символа

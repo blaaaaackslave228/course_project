@@ -15,7 +15,7 @@ int ascii(string symbol)
         //проверяем, является ли символ латинским
         if (ch >= ' ' && ch <= '~') {
             if (ch != L' ' && ch != L'\n' && ch != L'\t') {
-                //вывод форматов кириллических символов в ASCII
+                //вывод форматов латинских символов в ASCII
                 cout << "ACSII код латинского символа: " << ch << endl;
                 cout << "В десятичном формате: " << std::dec << static_cast<int>(ch) << endl;
                 cout << "В восьмеричном формате: " << std::oct << static_cast<int>(ch) << endl;
