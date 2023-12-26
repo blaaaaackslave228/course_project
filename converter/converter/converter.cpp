@@ -1,8 +1,7 @@
 #include <iostream>
 #include <Windows.h>
 #include <string>
-#include <sstream>
-#include <bitset>
+#include <limits>  // Добавленный заголовочный файл
 #include "UTF_8.h"
 #include "UTF_16.h"
 #include "WINDOWS1251.h"
@@ -13,7 +12,7 @@
 #include "NUMBER.h"
 using namespace std;
 
-//подключение функций для выделение надписи в рамку
+// Подключение функций для выделения надписи в рамку
 void drawLine(char ch, int length) {
     for (int i = 0; i < length; ++i) {
         cout << ch;
@@ -28,20 +27,18 @@ void drawTitle(string title) {
     drawLine('-', titleWidth);
 }
 
-int main() 
-{
-    //подлючение функции для изменения размеров консольного окна
+int main() {
     HWND consoleWindow = GetConsoleWindow();
     int new_width = 750;
     int new_height = 1000;
     RECT rect;
     GetWindowRect(consoleWindow, &rect);
     MoveWindow(consoleWindow, rect.left, rect.top, new_width, new_height, TRUE);
-    //подключение функции для установления заголовка консольного окна
     system("title SMT - конвертер символов");
     setlocale(LC_ALL, "RU");
     SetConsoleOutputCP(CP_UTF8);
     SetConsoleCP(1251);
+
     int choice;
     do {
         cout << "**************************************************************************************" << endl;
@@ -52,13 +49,22 @@ int main()
         cout << "4 - Получить латинский символ при вводе формата в ASCII." << endl;
         cout << "5 - Получить русский символ при вводе формата в ASCII WIN-1251." << endl;
         cout << "6 - Выход из программы." << endl;
-        cout <<endl;
+        cout << endl;
         cout << "**************************************************************************************" << endl;
         cout << endl;
         cout << "Ваш вариант: ";
         cin >> choice;
-        cin.ignore();
         cout << endl;
+        if (cin.fail() || choice < 1 || choice > 6) {
+            cout << "Ошибка ввода! Пожалуйста, введите число от 1 до 6." << endl << endl;
+            cin.clear(); // Очистка флага ошибки ввода
+            cin.ignore(9999, '\n'); // Очистка буфера ввода
+            continue; // Переход на следующую итерацию цикла
+        }
+
+        // Очищает символ новой строки из буфера
+        cin.ignore();
+
         switch (choice) {
         case 1: {
             wstring symbol;
@@ -109,12 +115,9 @@ int main()
         case 6: {
             break;
         }
-        default: {
-            cout << "Вы неправильно ввели номер операции! Пожалуйста, введите номер правильно." << endl;
-            break;
         }
-        }
-        cout << endl;
+        break;  // Изменение в этой строке
     } while (choice != 6);
+
     return 0;
 }

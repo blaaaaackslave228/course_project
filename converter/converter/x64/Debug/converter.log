@@ -1,2 +1,4 @@
-﻿  CODE.cpp
+﻿  converter.cpp
+D:\Денис\лабы по опи\проект\project\converter\converter\converter.cpp(24,43): warning C4267: инициализация: преобразование из "size_t" в "int"; возможна потеря данных
+D:\Денис\лабы по опи\проект\project\converter\converter\converter.cpp(24,26): warning C4267: инициализация: преобразование из "size_t" в "const int"; возможна потеря данных
   converter.vcxproj -> D:\Денис\лабы по опи\проект\project\converter\x64\Debug\converter.exe
