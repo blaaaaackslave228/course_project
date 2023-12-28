@@ -78,6 +78,7 @@ int main() {
             utf16(symbol);
             wcout << endl;
             windows(symbol);
+            cout << endl;
             break;
         }
         case 2: {
@@ -115,9 +116,7 @@ int main() {
         case 6: {
             break;
         }
-        }
-        break;  // Изменение в этой строке
+        }   
     } while (choice != 6);
-
     return 0;
 }
